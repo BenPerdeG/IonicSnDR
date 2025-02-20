@@ -1,12 +1,7 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
     <ion-content :fullscreen="true">
+      <img src="../assets/SnDR_logo.png" alt="Logo" />
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
@@ -14,6 +9,7 @@
       </ion-header>
 
       <div id="container">
+        
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
       </div>
@@ -25,10 +21,22 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 </script>
 
-<style scoped>
+<style>
+
+ion-content{
+  background: #B2B0B0;
+}
+
+ion-content img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 35%;
+}
+
 #container {
   text-align: center;
-  
   position: absolute;
   left: 0;
   right: 0;

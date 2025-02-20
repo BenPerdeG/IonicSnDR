@@ -1,0 +1,7 @@
+{
+  "name": "SnDR",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}

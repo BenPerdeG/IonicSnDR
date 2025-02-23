@@ -10,7 +10,8 @@
     "resolveJsonModule": true,
     "strict": true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "composite": true
   },
   "include": [
     "src/**/*.ts",

@@ -77,7 +77,7 @@ const toggleMenu = () => {
   margin-top: 10%;
   left: -20%;
   width: 20%;
-  height: calc(100% - (10% + 60px + 10px));
+  height: 50%;
   transition: left 0.3s ease-in-out;
   overflow: hidden;
   border-radius: 0px 0px 15px 0px;
@@ -101,7 +101,7 @@ ion-content {
 }
 
 ion-content i {
-  margin-top: 30%;
+  margin-top: 40%;
   font-size: 50px;
   color: #000;
 }

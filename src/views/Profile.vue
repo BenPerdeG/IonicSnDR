@@ -1,13 +1,7 @@
 <template>
-    <ion-page>
+    <ion-page class="profile">
       <ion-content :fullscreen="true">
-        <ion-header collapse="condense">
-          <ion-toolbar>
-            <ion-title size="large">Blank</ion-title>
-          </ion-toolbar>
-        </ion-header>
-  
-        <div id="container">      
+        <div id="containerP">      
           <FloatingMenu />
         </div>
       </ion-content>
@@ -22,6 +16,10 @@
   
   </script>
   
-  <style scoped>
+  <style>
+  #containerP{
+    background-color: #B2B0B0 !important; /* Change the background color directly on ion-page */
+    height: 100%;
+  }
   </style>
   

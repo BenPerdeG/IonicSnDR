@@ -85,12 +85,17 @@ const toggleMenu = () => {
 
 .menu-container.open .side-menu {
   left: 0;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
+
 }
 
 .menu-container .side-menu ion-content {
   --background: rgba(175, 175, 175, 0.75);
   color: black;
+  
 }
+
+
 
 .menu-container .side-menu ion-content p {
   color: black;

@@ -1,9 +1,9 @@
 <template>
   <ion-page>
     <ion-content :fullscreen="true">
-      <div id="container">      
-        <img src="@/assets/images/SnDR_logo.png" alt="SnDR Logo" class="logo">
-        <div class="Login-container" :class="{ 'open': isLoginOpen }">
+    <div id="container-a">      
+      <img src="@/assets/images/SnDR_logo.png" alt="SnDR Logo" class="logo">
+      <div class="Login-container" :class="{ 'open': isLoginOpen }">
         <p class="nombre">Nombre</p>
         <ion-input clear-input></ion-input>
         <p class="password">Contraseña</p>
@@ -11,8 +11,8 @@
         <p class="azul">¿Has olvidado la contraseña?</p>
         <ion-button class="loginButton" @click="goToInicio">Login</ion-button>
         <p class="azul" @click="toggleSignIn">¿No tienes cuenta?</p>
+        
       </div>
-      
       <div class="SignIn-container" :class="{ 'open': isSignInOpen }">
         <p class="email">Email</p>
         <ion-input clear-input></ion-input>
@@ -23,10 +23,7 @@
         <ion-button class="signinButton" @click="goToInicio">Sign In</ion-button>
         <p class="azul" @click="toggleSignIn">¿Ya tienes cuenta?</p>
       </div>
-
-
-
-      </div>
+    </div>
     </ion-content>
   </ion-page>
 </template>
@@ -60,13 +57,12 @@ defineProps();
 </script>
 
 <style>
-ion-page {
-  --background: #B2B0B0 !important; /* Change the background color directly on ion-page */
+
+#container-a {
+  background-color: #B2B0B0 !important; /* Change the background color directly on ion-page */
+  height: 100%;
 }
 
-ion-content.login-content {
-  --background: #B2B0B0 !important; /* Make sure content background color is set */
-}
 
 img{
   margin-top: 15%;
@@ -93,7 +89,7 @@ p{
 
 .Login-container{
   margin-top: 20%;
-  left: -1000px;
+  left: -1000%;
   width: 100%;
   align-items: center;
   position: absolute;
@@ -105,7 +101,7 @@ p{
 
 .SignIn-container{
   margin-top: 20%;
-  right: -1000px;
+  right: -1000%;
   width: 100%;
   align-items: center;
   position: absolute;

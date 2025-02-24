@@ -6,11 +6,14 @@
       </div>
       <div class="side-menu">
         <ion-content>
-          <p>Menu Content Goes Here</p>
+          <HomeButton />
+          <MyGamesButton />
+          <SearchButton />
+          <ProfileButton />
+          <QandA />
         </ion-content>
       </div>
     </div>
-
 
     <ion-content id="main-content">
       <p>Main content displayed here</p>
@@ -19,16 +22,29 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';  // Import Vue Router to track route changes
+import HomeButton from '@/components/HomeButton.vue';
+import QandA from '@/components/Q&AButton.vue';
+import MyGamesButton from '@/components/MyGamesButton.vue';
+import ProfileButton from '@/components/ProfileButton.vue';
+import SearchButton from '@/components/SearchButton.vue';
 
 const isMenuOpen = ref(false);
+
+// Create a route watcher to reset the menu state on route change
+const route = useRoute();
+
+watch(route, () => {
+  isMenuOpen.value = false;  // Reset menu to closed whenever the route changes
+});
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 </script>
 
-<style scoped>
+<style>
 .menu-container {
   position: sticky;
   top: 10%;
@@ -56,13 +72,10 @@ const toggleMenu = () => {
   left: 20%;
 }
 
-
 .menu-container .side-menu {
   position: fixed;
   margin-top: 10%;
-  /* 10% from top + button height + spacing */
   left: -20%;
-  /* Hidden by default */
   width: 20%;
   height: calc(100% - (10% + 60px + 10px));
   transition: left 0.3s ease-in-out;
@@ -81,5 +94,15 @@ const toggleMenu = () => {
 
 .menu-container .side-menu ion-content p {
   color: black;
+}
+
+ion-content {
+  text-align: center;
+}
+
+ion-content i {
+  margin-top: 30%;
+  font-size: 50px;
+  color: #000;
 }
 </style>

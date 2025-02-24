@@ -2,7 +2,7 @@
   <div>
     <div class="menu-container" :class="{ 'open': isMenuOpen }">
       <div class="floating-button" @click="toggleMenu">
-        <ion-icon name="menu"></ion-icon>
+        <i class="fa fa-bars"></i>
       </div>
       <div class="side-menu">
         <ion-content>
@@ -88,7 +88,7 @@ const toggleMenu = () => {
 }
 
 .menu-container .side-menu ion-content {
-  --background: #f0f0f0;
+  --background: rgba(175, 175, 175, 0.75);
   color: black;
 }
 
@@ -105,4 +105,15 @@ ion-content i {
   font-size: 50px;
   color: #000;
 }
+.menu-container .floating-button i {
+  margin-top: 0;
+  font-size: 30px;
+  color: #000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-container.open .floating-button i {
+  transform: rotate(90deg);
+}
+
 </style>

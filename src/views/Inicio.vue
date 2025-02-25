@@ -4,6 +4,14 @@
       <div id="containerInicio">      
         <FloatingMenu />
         <p class="titulo_Inicio">Welcome to SnDR</p>
+        
+        
+        <newComp text="Click me to open overlay!" />
+        
+        
+        
+        
+        
         <ion-footer class="footer_Inicio">
           <p class="footerText">Contactos: </p>
           <p class="footerText"> &ensp;
@@ -21,9 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonPage, IonButton, IonModal } from '@ionic/vue';
 import FloatingMenu from '@/components/floatingMenu.vue'; 
-
+import newComp from '@/components/newComp.vue'; 
 defineProps(); 
 
 </script>
@@ -57,6 +65,7 @@ defineProps();
 .footer_Inicio {
   position: fixed;
   bottom: 0;
+  height: 15%;
   width: 100%;
   color: #FFF;
   font-family: "Poltawski Nowy";

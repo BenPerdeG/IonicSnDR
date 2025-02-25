@@ -42,7 +42,7 @@ import FloatingMenu from '@/components/floatingMenu.vue';
 }
 
 ion-content::part(background) {
-
+  background: url('../assets/images/questionmark.png') 0% 0% / 20.509999990463257px 20.509999990463257px repeat, #353333;
 }
 
 ion-content::part(scroll) {

@@ -14,17 +14,18 @@
             type: 'fraction',
             el: '.swiper-pagination'
           }"
-          class="news-swiper"
-        >
+          class="news-swiper">
+          
           <swiper-slide v-for="(news, index) in newsData" :key="index">
-            <div class="news-card">
-              <h2 class="news-title">{{ news.title }}</h2>
-              <div class="news-content">
-                <p class="news-text">{{ news.text }}</p>
-                <a href="#" class="ver-mas" @click.prevent="openNewsOverlay(news)">Ver más</a>
-              </div>
-            </div>
-          </swiper-slide>
+    <div class="news-card"  :style="{ backgroundImage: `url(${news.backgroundImage})` }">
+    <h2 class="news-title">{{ news.title }}</h2>
+    <div class="news-content">
+      <p class="news-text">{{ news.text }}</p>
+      <a href="#" class="ver-mas" @click.prevent="openNewsOverlay(news)">Ver más</a>
+    </div>
+  </div>
+</swiper-slide>
+
 
           <!-- Custom pagination -->
           <div class="swiper-pagination"></div>
@@ -72,25 +73,33 @@ interface NewsItem {
   title: string;
   text: string;
   fullText: string;
+  backgroundImage?:string;
 }
 
 const swiperModules = [Pagination];
+
+import dndImage from '@/assets/images/dnd.png';
+import pathfinderImage from '@/assets/images/pathfinder.png';
+import logo2bgImage from '@/assets/images/logo2bg.png';
 
 const newsData: NewsItem[] = [
   {
     title: 'Noticia 1',
     text: 'Sed id lacinia erat, Sed id lacinia erat, sit amet auctor neque. Sed id lacinia erat, Pellentesque fringilla....',
-    fullText: 'Sed id lacinia erat, Sed id lacinia erat, sit amet auctor neque. Sed id lacinia erat, Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla.'
+    fullText: 'Sed id lacinia erat, Sed id lacinia erat, sit amet auctor neque. Sed id lacinia erat, Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla.',
+    backgroundImage: dndImage
   },
   {
     title: 'Noticia 2',
-    text: 'Nulla ac pharetra turpis, a feugiat est. Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla....',
-    fullText: 'Nulla ac pharetra turpis, a feugiat est. Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc.'
+    text: 'Nulla ac pharetra turpis, a feugiat est. Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat....',
+    fullText: 'Nulla ac pharetra turpis, a feugiat est. Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc.',
+    backgroundImage: pathfinderImage
   },
   {
     title: 'Noticia 3',
-    text: 'Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla...',
-    fullText: 'Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc. Sed id lacinia erat, sit amet auctor neque.'
+    text: 'Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit ...',
+    fullText: 'Vivamus condimentum ullamcorper elit ac scelerisque. Nulla id volutpat mauris, at fermentum libero. Sed id lacinia erat, sit amet auctor neque. Pellentesque fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquam tincidunt, nisl nunc tincidunt urna, nec aliquam nisl nunc vel nunc. Sed id lacinia erat, sit amet auctor neque.',
+    backgroundImage: logo2bgImage
   }
 ];
 
@@ -141,19 +150,14 @@ const closeNewsOverlay = () => {
 .news-swiper {
   width: 100%;
   height: 60vh;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
-.news-card {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin: 0 auto;
-  max-width: 800px;
-}
 
 .news-title {
   color: white;
+  text-decoration: underline;
   font-size: 2rem;
   margin-bottom: 1rem;
   font-family: "Poltawski Nowy", serif;
@@ -165,25 +169,60 @@ const closeNewsOverlay = () => {
   align-items: center;
   gap: 1rem;
 }
-
-.news-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: none;
+.news-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 0 auto;
+  max-width: 800px;
+  height: 300px; /* Adjust height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
 }
+
+
+.news-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  z-index: 1;
+}
+
+
+.news-title,
+.news-content {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+}
+
 
 .news-text {
   color: white;
   font-size: 1.1rem;
   line-height: 1.6;
   text-align: justify;
+  margin-left: -2.5%;
 }
 
 .ver-mas {
-  color: #DA0000;
-  text-decoration: none;
-  font-weight: bold;
+  color: #ffffff;
+  font-size: 15px;
+  text-decoration: underline;
+  font-weight: bolder;
   align-self: flex-end;
 }
 
@@ -203,13 +242,13 @@ const closeNewsOverlay = () => {
   border-top: 1px solid #000;
   padding: 1.5rem 0;
   margin-top: auto;
-}
-
-.footer-content {
   max-width: 1200px;
   margin: 0 auto;
+  height: 10%;
   padding: 0 2rem;
 }
+
+
 
 .footer-title {
   color: white;
@@ -231,6 +270,7 @@ const closeNewsOverlay = () => {
   gap: 0.5rem;
   color: white;
   font-size: 1rem;
+  padding-bottom: 20px;
 }
 
 .bsky-icon {

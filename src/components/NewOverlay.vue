@@ -72,6 +72,7 @@ const close = () => {
   margin-bottom: 1rem;
   text-decoration: underline;
   color: #ffffff;
+  margin-left: -2.5%;
 }
 
 .news-full-text {
@@ -80,5 +81,10 @@ const close = () => {
   margin-bottom: 2rem;
   flex-grow: 1;
   overflow-y: auto;
+  margin-left: -2.5%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  color: #ffffff;
 }
 </style>

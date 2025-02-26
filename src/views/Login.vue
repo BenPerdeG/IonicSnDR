@@ -79,6 +79,7 @@ ion-input {
   border-radius: 25px;
   background: white;
   padding: 10px;
+  
 }
 
 p{
@@ -134,6 +135,7 @@ height: 200%;
 --border-radius: 25px;
 --background: #000;
 color: white;
+font-size: 15px;
 
 }
 

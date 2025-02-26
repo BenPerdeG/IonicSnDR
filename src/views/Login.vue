@@ -8,7 +8,6 @@
         <ion-input clear-input></ion-input>
         <p class="password">Contraseña</p>
         <ion-input clear-input></ion-input>
-        <p class="azul">¿Has olvidado la contraseña?</p>
         <ion-button class="loginButton" @click="goToInicio">Login</ion-button>
         <p class="azul" @click="toggleSignIn">¿No tienes cuenta?</p>
         
@@ -137,7 +136,7 @@ height: 200%;
 --background: #000;
 color: white;
 font-size: 15px;
-
+margin-top: 10%;
 }
 
 .signinButton{

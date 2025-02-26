@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonButton, IonModal } from '@ionic/vue';
+import { IonContent, IonPage, IonFooter } from '@ionic/vue';
 import FloatingMenu from '@/components/floatingMenu.vue'; 
 import newComp from '@/components/newComp.vue'; 
 defineProps(); 

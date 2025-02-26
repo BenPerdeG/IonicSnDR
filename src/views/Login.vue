@@ -28,9 +28,10 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">import { IonContent, IonPage } from '@ionic/vue';
+<script setup lang="ts">import { IonContent, IonPage, IonInput, IonButton } from '@ionic/vue';
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
 
 const isLoginOpen = ref(true);
 const isSignInOpen = ref(false);

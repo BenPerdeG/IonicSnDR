@@ -22,7 +22,8 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch} from 'vue';
+import { IonContent } from '@ionic/vue';
 import { useRoute } from 'vue-router';  // Import Vue Router to track route changes
 import HomeButton from '@/components/HomeButton.vue';
 import QandA from '@/components/Q&AButton.vue';

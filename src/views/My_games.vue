@@ -9,7 +9,9 @@
         <div class="games-container">
           <div class="contieneJuegos" v-for="(Games, index) in gameInst" :key="index">
             <div id="Juegitos">
-              {{Games.title}}
+              <div id="iconoG"></div>
+              <p>{{Games.title}}</p>
+              <ion-button id="GoGames"> <i class="fa fa-arrow"></i></ion-button>
             </div>
           </div>
         </div>
@@ -19,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonPage, IonButton} from '@ionic/vue';
 import FloatingMenu from '@/components/floatingMenu.vue';
 
 interface Games {
@@ -74,6 +76,21 @@ defineProps();
   margin-top: 30%;
   gap: 5px; /* Adds space between each game */
 
+}
+
+#iconoG{
+background-color: #2B2938;
+border-radius: 5px;
+width: 3em;
+height: 3em;
+margin-left: 2em;
+}
+#GoGames{
+--background: #2B2938;
+border-radius: 5px;
+width: 3em;
+height: 3em;
+margin-left: 7em;
 }
 
 

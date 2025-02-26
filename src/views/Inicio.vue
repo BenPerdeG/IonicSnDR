@@ -4,14 +4,7 @@
       <div id="containerInicio">      
         <FloatingMenu />
         <p class="titulo_Inicio">Welcome to SnDR</p>
-        
-        
         <newComp text="Click me to open overlay!" />
-        
-        
-        
-        
-        
         <ion-footer class="footer_Inicio">
           <p class="footerText">Contactos: </p>
           <p class="footerText"> &ensp;
@@ -43,13 +36,13 @@ defineProps();
   height: 100%;
 }
 
-.titulo_Inicio {
+#containerInicio .titulo_Inicio {
   text-align: center;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.50);
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #000;
   font-family: "Poltawski Nowy";
-  font-size: 50px;
+  font-size: 55px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -58,7 +51,8 @@ defineProps();
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-left: 25%;
-  width: 50%;
+  margin-top: 5%;
+  width: 55%;
   flex-grow: 1; /* Allow content to take remaining space */
 }
 

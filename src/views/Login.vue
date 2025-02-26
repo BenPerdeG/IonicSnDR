@@ -61,6 +61,7 @@ defineProps();
 #container-a {
   background-color: #B2B0B0 !important; /* Change the background color directly on ion-page */
   height: 100%;
+  color: #000;
 }
 
 
@@ -78,6 +79,7 @@ ion-input {
   border-radius: 25px;
   background: white;
   padding: 10px;
+  
 }
 
 p{
@@ -133,6 +135,7 @@ height: 200%;
 --border-radius: 25px;
 --background: #000;
 color: white;
+font-size: 15px;
 
 }
 

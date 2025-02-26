@@ -51,6 +51,7 @@ const toggleMenu = () => {
   height: 100%;
   width: 250px;
   text-align: left;
+  z-index: 1000;
 }
 
 .menu-container .floating-button {

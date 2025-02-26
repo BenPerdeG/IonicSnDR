@@ -21,5 +21,12 @@
     background-color: #B2B0B0 !important; /* Change the background color directly on ion-page */
     height: 100%;
   }
+
+  .menu-container.open .side-menu {
+  left: 0;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.50);
+
+}
+
   </style>
   

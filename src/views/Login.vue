@@ -61,6 +61,7 @@ defineProps();
 #container-a {
   background-color: #B2B0B0 !important; /* Change the background color directly on ion-page */
   height: 100%;
+  color: #000;
 }
 
 

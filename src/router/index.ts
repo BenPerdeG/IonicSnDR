@@ -6,6 +6,10 @@ import QandA from '../views/Q&A.vue';
 import MyGames from '../views/My_games.vue';
 import Search from '../views/Search.vue';
 import Profile from '../views/Profile.vue';
+import Lobby from '../views/GameLobby.vue';
+import LobbyA from '../views/GameLobbyAdmin.vue';
+//import Tablero from '../views/Tablero.vue';
+//import TableroA from '../views/TableroAdmin.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -40,8 +44,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/inicio',
     name: 'Home',
     component: Inicio
+  },
+  {
+    path: '/lobby',
+    name: 'Lobby',
+    component: Lobby 
+  },
+  {
+    path: '/lobbyA',
+    name: 'LobbyA',
+    component: LobbyA 
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

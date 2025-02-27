@@ -11,7 +11,7 @@
             <div id="Juegitos">
               <div id="iconoG" :style="{ background: `url(${Games.iconImage})`}" ></div>
               <p>{{Games.title}}</p>
-              <router-link to="/login">
+              <router-link to="/lobbyA">
               <ion-button id="GoGames"><p>➡</p></ion-button>
               </router-link>
             </div>

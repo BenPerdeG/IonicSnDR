@@ -5,14 +5,18 @@
         <div class="background-imageG"></div>
         <FloatingMenu />
         <h1 class="titulo_Games">Buscar Partida</h1>
+
+        <!-- Search Bar -->
+        <ion-searchbar v-model="searchQuery" debounce="300" placeholder="Buscar Partida..."></ion-searchbar>
+
         <!-- Parent container for all games -->
         <div class="games-container">
-          <div class="contieneJuegos" v-for="(Games, index) in gameInst" :key="index">
+          <div class="contieneJuegos" v-for="(Games, index) in filteredGames" :key="index">
             <div id="Juegitos">
               <div id="iconoG" :style="{ background: `url(${Games.iconImage})`}" ></div>
-              <p>{{Games.title}}</p>
-              <router-link to="/login">
-              <ion-button id="GoGames"><p>➡</p></ion-button>
+              <p>{{ Games.title }}</p>
+              <router-link to="/lobby">
+                <ion-button id="GoGames"><p>➡</p></ion-button>
               </router-link>
             </div>
           </div>
@@ -23,7 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonButton} from '@ionic/vue';
+import { IonContent, IonPage, IonButton, IonSearchbar } from '@ionic/vue';
+import { ref, computed } from 'vue';
+import Fuse from 'fuse.js'; // Import Fuse.js
 import FloatingMenu from '@/components/floatingMenu.vue';
 
 import dndImage from '@/assets/images/dnd.png';
@@ -33,26 +39,55 @@ import logo2bgImage from '@/assets/images/logo2bg.png';
 interface Games {
   title: string;
   text: string;
-  iconImage?:string;
+  iconImage?: string;
 }
 
 const gameInst: Games[] = [
   { title: 'Partida 1', text: 'Esto es la partida 1', iconImage: dndImage },
   { title: 'Partida 2', text: 'Esto es la partida 2' },
-  { title: 'Partida 3', text: 'Esto es la partida 3',iconImage: pathfinderImage  },
-  { title: 'Partida 4', text: 'Esto es la partida 4',iconImage: dndImage  },
+  { title: 'Partida 3', text: 'Esto es la partida 3', iconImage: pathfinderImage },
+  { title: 'Partida 4', text: 'Esto es la partida 4', iconImage: dndImage },
   { title: 'Partida 5', text: 'Esto es la partida 4+1', iconImage: logo2bgImage },
   { title: 'Partida 6', text: 'Esto es la partida 6' },
-  { title: 'Partida 7', text: 'Esto es la partida 7',iconImage: pathfinderImage },
+  { title: 'Partida 7', text: 'Esto es la partida 7', iconImage: pathfinderImage },
   { title: 'Partida 8', text: 'Esto es la partida 8' },
-  { title: 'Partida 9', text: 'Esto es la partida 9, curioso que revises la 9 y no la 10.', iconImage:logo2bgImage },
-  { title: 'Partida 10', text: 'Esto es la partida 10',iconImage: dndImage }
+  { title: 'Partida 9', text: 'Esto es la partida 9, curioso que revises la 9 y no la 10.', iconImage: logo2bgImage },
+  { title: 'Partida 10', text: 'Esto es la partida 10', iconImage: dndImage }
 ];
+
+const searchQuery = ref('');
+
+// Setting up Fuse.js
+const fuse = new Fuse(gameInst, {
+  keys: ['title'], // Only search titles
+  threshold: 0.3,  // Adjust sensitivity
+  includeScore: false // Disable scoring, only return matches
+});
+
+// Filter the games list to only return games that match the search query
+const filteredGames = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return gameInst; // Return all if search is empty
+  }
+
+  // Fuzzy search using Fuse.js
+  const results = fuse.search(searchQuery.value);
+
+  // Only show results that closely match the search term
+  return results
+    .filter(result => {
+      // Ensure the game title matches the search query (either exactly or fuzzy enough)
+      const gameTitle = result.item.title.toLowerCase();
+      return gameTitle.includes(searchQuery.value.toLowerCase());
+    })
+    .map(result => result.item); // Return only the matching game items
+});
 
 defineProps();
 </script>
 
 <style scoped>
+/* Background */
 .background-imageG {
   position: absolute;
   top: 0;
@@ -64,6 +99,7 @@ defineProps();
   z-index: -1;
 }
 
+/* Title */
 .titulo_Games {
   text-align: center;
   font-size: 55px;
@@ -75,17 +111,27 @@ defineProps();
   text-shadow: 10px 10px 10px rgb(0, 0, 0) !important; 
 }
 
+/* Search Bar */
+ion-searchbar {
+  margin: 10px auto;
+  width: 80%;
+  max-width: 500px;
+  --background: #2B2938;
+  --color: white;
+  --placeholder-color: lightgray;
+  --border-radius: 10px;
+}
 
-/* Parent container for all games */
+/* Games Container */
 .games-container {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 20%;
-  gap: 5px; /* Adds space between each game */
-
+  gap: 5px;
 }
 
+/* Game Icon */
 #iconoG {
   background-color: #2B2938 !important;
   border-radius: 5px !important;
@@ -97,23 +143,22 @@ defineProps();
   background-repeat: no-repeat !important;
 }
 
-
-
-#GoGames{
---background: #000000;
-border-radius: 5px;
-width: 3em;
-height: 3em;
-right: 2em;
-margin-top:-1.5em;
-position: absolute;
+/* Button */
+#GoGames {
+  --background: #000000;
+  border-radius: 5px;
+  width: 3em;
+  height: 3em;
+  right: 2em;
+  margin-top: -1.5em;
+  position: absolute;
 }
 
-
-#GoGames p{
-font-size: 1.5em;
+#GoGames p {
+  font-size: 1.5em;
 }
 
+/* Game Card */
 #Juegitos {
   display: flex;
   width: 25em;
@@ -123,5 +168,4 @@ font-size: 1.5em;
   border-radius: 15px;
   align-items: center;
 }
-
 </style>

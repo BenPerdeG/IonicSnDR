@@ -46,7 +46,7 @@ const close = () => {
   display: flex;
   flex-direction: column;
   width: 357px;
-  height: 397px;
+  height: 500px;
   padding: 11px 29px 0px 28px;
   justify-content: center; /* Centers content vertically */
   align-items: center;    /* Centers content horizontally */

@@ -3,7 +3,7 @@
     <ion-content :fullscreen="true">
       <div id="containerInicio">      
         <FloatingMenu />
-        <h1 class="titulo_Inicio">Welcome<br/>to SnDR</h1>
+        <h1 class="titulo_Inicio">Bienvenido<br/>a SnDR</h1>
         
         <!-- News Carousel -->
         <swiper
@@ -133,17 +133,13 @@ const closeNewsOverlay = () => {
 
 .titulo_Inicio {
   text-align: center;
-  font-family: "Poltawski Nowy", serif;
   font-size: 55px;
   font-weight: 700;
   line-height: 1.2;
   margin: 5% 0;
-  background: linear-gradient(78deg, #740000 8.99%, #DA0000 92.67%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.50);
-  -webkit-text-stroke: 2px #000;
+  color: white;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.80);
+
 }
 
 /* News Carousel Styles */

@@ -11,9 +11,11 @@
             <div id="Juegitos">
               <div id="iconoG" :style="{ background: `url(${Games.iconImage})`}" ></div>
               <p>{{Games.title}}</p>
-              <router-link to="/lobbyA">
-              <ion-button id="GoGames"><p>➡</p></ion-button>
-              </router-link>
+              <router-link :to="{
+  path: `/lobbya/${encodeURIComponent(Games.title)}/${encodeURIComponent(Games.text)}/${encodeURIComponent(Games.iconImage || '')}`
+}">
+  <ion-button id="GoGames"><p>➡</p></ion-button>
+</router-link>
             </div>
           </div>
         </div>
@@ -112,6 +114,7 @@ position: absolute;
 
 #GoGames p{
 font-size: 1.5em;
+margin:0;
 }
 
 #Juegitos {

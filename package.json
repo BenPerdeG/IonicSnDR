@@ -20,11 +20,13 @@
     "@ionic/vue": "^8.4.3",
     "@ionic/vue-router": "^8.4.3",
     "@vueuse/core": "^12.7.0",
+    "bootstrap": "^5.3.3",
     "font-awesome": "^4.7.0",
     "fuse.js": "^7.1.0",
     "ionicons": "^7.4.0",
     "swiper": "^11.2.4",
     "vue": "^3.3.0",
+    "vue-clipboard2": "^0.3.3",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "typescript": "~5.6.2",
     "vite": "~5.2.0",
     "vitest": "^0.34.6",
+    "vue-svg-loader": "^0.16.0",
     "vue-tsc": "^2.1.10"
   },
   "description": "An Ionic project"

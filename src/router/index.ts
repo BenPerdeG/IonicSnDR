@@ -46,14 +46,16 @@ const routes: Array<RouteRecordRaw> = [
     component: Inicio
   },
   {
-    path: '/lobby',
+    path: '/lobby/:title/:description/:image?',
     name: 'Lobby',
-    component: Lobby 
+    component: Lobby,
+    props: true
   },
   {
-    path: '/lobbyA',
+    path: '/lobbya/:title/:description/:image?',
     name: 'LobbyA',
-    component: LobbyA 
+    component: LobbyA,
+    props: true
   }
 ]
 

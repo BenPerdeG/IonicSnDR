@@ -3,47 +3,46 @@
       <ion-content>
         <div class="page-container">
           <FloatingMenu />
-          <div class="imageIcon"></div>
+          <div 
+            class="imageIcon" 
+            :style="{ backgroundImage: image ? `url(${image})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: image ? 'transparent' : '#b5aeae' }"
+          ></div>
   
           <div class="title-section">
-            <div class="icon-container">
-              <ion-icon :icon="lockClosedOutline" class="lock-icon"></ion-icon>
-            </div>
             <div class="title-container">
-              <h1 class="title">Nueva</h1>
-              <h1 class="title">Partida</h1>
+              <h1 class="title">  <i 
+              id="icono" 
+              :class="{ active: isActive }" 
+              
+            ></i>&numsp;{{ title }}</h1>
+            
             </div>
           </div>
-          
-          <!-- Description section -->
+  
           <div class="description-section">
-            <p class="description-text">Descripción...</p>
+            <br>Descripción:
+            <p class="description-text">{{ description }}</p>
           </div>
-          
-          <!-- Players section -->
+  
           <div class="players-section">
             <div class="section-row">
-              <!-- Jugadores Title and Circle on the left -->
               <div class="jugadores-container">
                 <h2 class="section-title">Jugadores:</h2>
                 <div class="players-container">
+                  <div class="players"><i class="fa fa-user"></i></div>
                   <div class="players"></div>
-                  <div class="players"></div> <!-- Removed the plus sign -->
                 </div>
               </div>
-              
-              <!-- Admin Title and Circle on the right -->
               <div class="admin-container">
                 <h2 class="section-title">Admin</h2>
                 <div class="admin-avatar"></div>
               </div>
             </div>
           </div>
-          
-          <!-- Action buttons -->
+  
           <div class="action-buttons">
             <router-link to="/login">
-            <ion-button expand="block" class="enter-button">Entrar</ion-button>
+              <ion-button expand="block" class="enter-button">Entrar</ion-button>
             </router-link>
           </div>
         </div>
@@ -52,38 +51,70 @@
   </template>
   
   <script setup>
-  import { 
-    IonPage, 
-    IonContent, 
-    IonButton, 
-    IonIcon 
-  } from '@ionic/vue';
-  import { lockClosedOutline } from 'ionicons/icons';
-  import FloatingMenu from '@/components/floatingMenu.vue';
-  </script>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { IonPage, IonContent, IonButton } from '@ionic/vue';
+import FloatingMenu from '@/components/floatingMenu.vue';
+
+// Reactive state to track the active status of the icon
+const isActive = ref(false);
+
+const route = useRoute();
+const title = decodeURIComponent(route.params.title || 'Nueva Partida');
+const description = decodeURIComponent(route.params.description || 'Descripción...');
+const image = route.params.image ? decodeURIComponent(route.params.image) : '';
+
+// Method to toggle the active state
+const toggleActive = () => {
+  isActive.value = !isActive.value;
+};
+</script>
+
   
   <style scoped>
   .page-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center everything horizontally */
-    justify-content: center; /* Center everything vertically */
+    align-items: center;
+    justify-content: center;
     height: 100%;
     padding: 0;
-    background-color: #888;
+    background-color: #ffffff;
+  }
+
+  .players i{
+    font-size: 35px;
+    margin-top: 15%;
+  }
+  
+  
+  #icono {
+    width: 24px;
+    height: 24px;
+    background-image: url('@/assets/images/lock.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    margin-left: -50%;
+  }
+
+  #icono.active {
+    width: 24px;
+    height: 24px;
+    background-image: url('@/assets/images/unlock.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    margin-left: -50%;
   }
   
   .imageIcon {
     width: 80%;
     height: 170px;
-    background-color: #b5aeae;
     border-radius: 16px;
     margin-top: 2em;
-    margin-bottom: 2em;
-    margin-left: 10%;
+    margin-bottom: -2em;
     display: block;
-    margin-left: auto;
-    margin-right: auto; /* Center horizontally */
   }
   
   .title-section {
@@ -94,17 +125,11 @@
     padding: 0 20px;
   }
   
-  .icon-container {
-    margin-right: 10px;
-  }
-  
-  .lock-icon {
-    font-size: 32px;
-    color: #000;
-  }
-  
   .title-container {
     text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
   .title {
@@ -115,18 +140,25 @@
   }
   
   .description-section {
-    padding: 0 20px;
     margin-bottom: 40px;
-    text-align: center; /* Center text */
+    text-align: left;
+    font-size: 15px;
+    font-weight: bolder;
   }
   
+
+  
   .description-text {
-    color: #000000;
+    color: #000;
     font-size: 18px;
     width: 300px;
     margin-left: 0;
-    padding: 3em;
-    background-color:white;
+    padding-top: 1em;
+    padding-bottom: 5em;
+    padding-left: 2em;
+    padding-right: 5em;
+    margin-bottom: 10em;
+    background-color: rgba(58, 57, 57, 0.205);
     border-radius: 5px;
   }
   
@@ -134,34 +166,33 @@
     flex: 1;
     padding: 0 20px;
     margin-bottom: 20px;
-    text-align: center; /* Center text */
+    text-align: center;
   }
   
   .section-row {
     display: flex;
-    justify-content: space-between; /* Space out the two containers (Jugadores and Admin) */
+    justify-content: space-between;
     margin-bottom: 20px;
-    align-items: center; /* Align titles and circles in the same row */
+    align-items: center;
   }
   
   .jugadores-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-right: 10em; /* Center the content */
+    padding-right: 10em;
   }
   
   .jugadores-container .section-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px; /* Space between title and circles */
+    margin-bottom: 10px;
   }
   
-  /* New container for players to align them horizontally */
   .jugadores-container .players-container {
     display: flex;
-    justify-content: center; /* Align circles horizontally */
-    gap: 10px; /* Optional: space between circles */
+    justify-content: center;
+    gap: 10px;
   }
   
   .players {
@@ -169,21 +200,18 @@
     height: 56px;
     border-radius: 50%;
     background-color: #b5aeae;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   
   .admin-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content */
+    align-items: center;
   }
   
   .admin-container .section-title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px; /* Space between title and circle */
+    margin-bottom: 10px;
   }
   
   .admin-avatar {
@@ -196,8 +224,7 @@
   .action-buttons {
     padding: 0 20px 20px;
     display: flex;
-    gap: 10px;
-    justify-content: center; /* Center the buttons */
+    justify-content: center;
   }
   
   .enter-button {
@@ -209,9 +236,8 @@
     height: 48px;
     flex: 1;
   }
-  
   .delete-button {
-    --background: #932121;
+    --background: #e70b0b;
     color: white;
     --border-radius: 24px;
     font-weight: bold;

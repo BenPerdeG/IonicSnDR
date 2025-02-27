@@ -4,10 +4,10 @@
       <div id="container">
         <div class="background-imageG"></div>
         <FloatingMenu />
-        <h1 class="titulo_Games">Buscar Partida</h1>
+        <h1 class="titulo_Games">Buscar Publica</h1>
 
         <!-- Search Bar -->
-        <ion-searchbar v-model="searchQuery" debounce="300" placeholder="Buscar Partida..."></ion-searchbar>
+        <ion-searchbar v-model="searchQuery" debounce="300" placeholder="Buscar Publica..."></ion-searchbar>
 
         <!-- Parent container for all games -->
         <div class="games-container">
@@ -15,9 +15,11 @@
             <div id="Juegitos">
               <div id="iconoG" :style="{ background: `url(${Games.iconImage})`}" ></div>
               <p>{{ Games.title }}</p>
-              <router-link to="/lobby">
-                <ion-button id="GoGames"><p>➡</p></ion-button>
-              </router-link>
+              <router-link :to="{
+  path: `/lobby/${encodeURIComponent(Games.title)}/${encodeURIComponent(Games.text)}/${encodeURIComponent(Games.iconImage || '')}`
+}">
+  <ion-button id="GoGames"><p>➡</p></ion-button>
+</router-link>
             </div>
           </div>
         </div>
@@ -43,16 +45,16 @@ interface Games {
 }
 
 const gameInst: Games[] = [
-  { title: 'Partida 1', text: 'Esto es la partida 1', iconImage: dndImage },
-  { title: 'Partida 2', text: 'Esto es la partida 2' },
-  { title: 'Partida 3', text: 'Esto es la partida 3', iconImage: pathfinderImage },
-  { title: 'Partida 4', text: 'Esto es la partida 4', iconImage: dndImage },
-  { title: 'Partida 5', text: 'Esto es la partida 4+1', iconImage: logo2bgImage },
-  { title: 'Partida 6', text: 'Esto es la partida 6' },
-  { title: 'Partida 7', text: 'Esto es la partida 7', iconImage: pathfinderImage },
-  { title: 'Partida 8', text: 'Esto es la partida 8' },
-  { title: 'Partida 9', text: 'Esto es la partida 9, curioso que revises la 9 y no la 10.', iconImage: logo2bgImage },
-  { title: 'Partida 10', text: 'Esto es la partida 10', iconImage: dndImage }
+  { title: 'Publica 1', text: 'Esto es la Publica 1', iconImage: dndImage },
+  { title: 'Publica 2', text: 'Esto es la Publica 2' },
+  { title: 'Publica 3', text: 'Esto es la Publica 3', iconImage: pathfinderImage },
+  { title: 'Publica 4', text: 'Esto es la Publica 4', iconImage: dndImage },
+  { title: 'Publica 5', text: 'Esto es la Publica 4+1', iconImage: logo2bgImage },
+  { title: 'Publica 6', text: 'Esto es la Publica 6' },
+  { title: 'Publica 7', text: 'Esto es la Publica 7', iconImage: pathfinderImage },
+  { title: 'Publica 8', text: 'Esto es la Publica 8' },
+  { title: 'Publica 9', text: 'Esto es la Publica 9, curioso que revises la 9 y no la 10.', iconImage: logo2bgImage },
+  { title: 'Publica 10', text: 'Esto es la Publica 10', iconImage: dndImage }
 ];
 
 const searchQuery = ref('');

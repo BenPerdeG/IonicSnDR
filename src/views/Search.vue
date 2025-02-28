@@ -18,7 +18,7 @@
               <router-link :to="{
   path: `/lobby/${encodeURIComponent(Games.title)}/${encodeURIComponent(Games.text)}/${encodeURIComponent(Games.iconImage || '')}`
 }">
-  <ion-button id="GoGames"><p>➡</p></ion-button>
+  <ion-button id="GoGamesSearch"><p>➡</p></ion-button>
 </router-link>
             </div>
           </div>
@@ -131,6 +131,7 @@ ion-searchbar {
   flex-direction: column;
   margin-top: 20%;
   gap: 5px;
+  color: black;
 }
 
 /* Game Icon */
@@ -146,7 +147,7 @@ ion-searchbar {
 }
 
 /* Button */
-#GoGames {
+#GoGamesSearch {
   --background: #000000;
   border-radius: 5px;
   width: 3em;
@@ -154,10 +155,12 @@ ion-searchbar {
   right: 2em;
   margin-top: -1.5em;
   position: absolute;
+  color: white;
 }
 
-#GoGames p {
+#GoGamesSearch p {
   font-size: 1.5em;
+  margin-top: 0.75em;
 }
 
 /* Game Card */

@@ -8,8 +8,8 @@ import Search from '../views/Search.vue';
 import Profile from '../views/Profile.vue';
 import Lobby from '../views/GameLobby.vue';
 import LobbyA from '../views/GameLobbyAdmin.vue';
-//import Tablero from '../views/Tablero.vue';
-//import TableroA from '../views/TableroAdmin.vue';
+import Tablero from '../views/Tablero.vue';
+import TableroA from '../views/TableroAdmin.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -56,6 +56,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'LobbyA',
     component: LobbyA,
     props: true
+  },
+  {
+    path: '/tableroA',
+    name: 'TableroA',
+    component: TableroA
+  },
+  {
+    path: '/tablero',
+    name: 'Tablero',
+    component: Tablero
   }
 ]
 

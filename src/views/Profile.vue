@@ -61,6 +61,7 @@ import FloatingMenu from '@/components/floatingMenu.vue';
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 
 .profile-container {

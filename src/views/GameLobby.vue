@@ -41,7 +41,7 @@
           </div>
   
           <div class="action-buttons">
-            <router-link to="/login">
+            <router-link to="/tablero">
               <ion-button expand="block" class="enter-button">Entrar</ion-button>
             </router-link>
           </div>
@@ -123,6 +123,7 @@ const toggleActive = () => {
     justify-content: center;
     margin-bottom: 10px;
     padding: 0 20px;
+    color: black;
   }
   
   .title-container {
@@ -144,12 +145,13 @@ const toggleActive = () => {
     text-align: left;
     font-size: 15px;
     font-weight: bolder;
+    color: black;
   }
   
 
   
   .description-text {
-    color: #000;
+    color:black;
     font-size: 18px;
     width: 300px;
     margin-left: 0;

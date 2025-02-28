@@ -85,7 +85,7 @@ defineProps();
   flex-direction: column;
   margin-top: 20%;
   gap: 5px; /* Adds space between each game */
-
+  color: black;
 }
 
 #iconoG {
@@ -109,6 +109,7 @@ height: 3em;
 right: 2em;
 margin-top:-1.5em;
 position: absolute;
+color: white;
 }
 
 

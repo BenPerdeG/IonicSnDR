@@ -51,7 +51,7 @@
           </div>
   
           <div class="action-buttons">
-            <router-link to="/login">
+            <router-link to="/tableroA">
               <ion-button expand="block" class="enter-button">Entrar</ion-button>
             </router-link>
             <router-link to="/games">
@@ -255,7 +255,8 @@
 .clipboardCopy.active {
     opacity: 1;
     visibility: visible;
-    transition-delay: 0s; /* Removes the delay when activating */
+    transition-delay: 0s; 
+    color: black;
 }
 
   .page-container {
@@ -303,6 +304,7 @@
     justify-content: center;
     margin-bottom: 10px;
     padding: 0 20px;
+    color: black;
   }
   
   .title-container {
@@ -324,10 +326,11 @@
     text-align: left;
     font-size: 15px;
     font-weight: bolder;
+    color: black;
   }
   
   .description-text {
-    color: #000;
+    color: black;
     font-size: 18px;
     width: 300px;
     margin-left: 0;

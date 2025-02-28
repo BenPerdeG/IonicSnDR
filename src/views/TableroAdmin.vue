@@ -156,9 +156,9 @@ const showDiceResultOverlay = ref(false);
 const diceRolls = ref([]);
 const totalRoll = ref(0);
 const chatMessages = ref([
-  "Welcome to the game chat!",
-  "Roll the dice to start playing.",
-  "You can communicate with other players here."
+  "Bienvenido a mi chat",
+    "Yo creo que minimo esto se merece un 8",
+    "Pero que se yo, soy un simple chat",
 ]);
 const newMessage = ref('');
 const currentTab = ref(0);
